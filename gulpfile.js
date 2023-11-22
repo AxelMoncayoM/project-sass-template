@@ -1,6 +1,6 @@
-const {src, dest, watch} =  require("gulp");
+const {src, dest, watch, series} = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
-const imagemin = require("gulp-image");
+const imagemin = require("gulp-imagemin");
 const plumber = require("gulp-plumber");
 const sourcemaps = require("gulp-sourcemaps");
 const postcss = require("gulp-postcss");
@@ -20,7 +20,7 @@ function css(done){
 }
 
 function images(done){
-    src("src/img/**/*.{jpg,png}'")
+    src("src/img/**/*.{jpg,png}")
         .pipe(imagemin({optimizationLevel: 3}))
         .pipe(dest("build/img"))
 
